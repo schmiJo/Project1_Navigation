@@ -11,7 +11,7 @@ Three general emergent Behaviours can be observed:
 2. The Agent avoids blue bananas
 3. If there is neither a blue, nor a yellow banana in the screen the agent mostly pans to the left‚
 
-The Agent was trained within 431 episodes: <br>
+The Agent was trained within 548 episodes: <br>
 ![image info](./drawables/training.png)
 
 ## Learning Algorithm
@@ -94,33 +94,37 @@ The chosen optimizer is Adam.
 
 #### Epsilon
 The value for epsilon starts with 1.
-This means 100% exploratory policy.
+This means a 100% exploratory policy.
 With each episode the epsilon decays by a factor of 0.995 until it has reached epsilon min: 0.1
 
 #### Minibatch size
 The minibatch size is the size of the batch used to learn by using gradient descent. <br>
-One minibatch is sampled from the replay buffer.
+One minibatch is sampled from the replay buffer.<br>
+The chosen minibatch size is 70
 
 ### Gamma
 Gamma is the discount factor.<br>
 Ranging from 0 to 1 <br>
-Bigger values of gamma correspond to a policy that values future reward just as much as immediate.
-
+Bigger values of gamma correspond to a policy that values future reward just as much as immediate.<br>
 The chosen value for gamma is 0.992
 
 ### Learning Rate
-
 The Learning rate is used for the adam optimizer.
 It determines how big the gradient descent steps are.
+The Learning rate is set to 0.0005
 
 ### Update-Every
-Update-Every determines after what amount of actions the learning should occur.
+Update-Every determines after what amount of actions the learning should occur.<br>
 The selected value for Update-Every is 10.
 
 ### Tau
 Tau is used for soft update of target parameters.
-Larger values for tau were observed to have a hard time learning at the beginning but perform better eventually.
+Larger values for tau were observed to have a hard time learning at the beginning but perform better eventually.<br>
 The selected value of Tau is 0.002
+
+###Buffer Size
+The constant BUFFER_SIZE determines the maximum amount of experiences that can be stored in the ReplayBuffer. <br>
+The value chosen for this Project is 100000
 
 ## Ideas for Future Work
 
