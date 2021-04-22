@@ -13,7 +13,7 @@ MINIBATCH_SIZE = 70  # minibatch size
 GAMMA = 0.992  # discount factor
 LEARNING_RATE = 5e-4  # learning rate
 UPDATE_EVERY = 10  # how often to update the network
-TAU = 2e-3  # used for soft update of target parameters Larger values for tau were observed to have a hard time learning at the beginning but perform better eventually
+TAU = 0.002  # used for soft update of target parameters Larger values for tau were observed to have a hard time learning at the beginning but perform better eventually
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -100,6 +100,7 @@ class Agent():
         # Get expected Q values from local model
         Q_expected = self.qnetwork_local.forward(states).gather(1, actions)
 
+
         # Compute loss
         loss = F.mse_loss(Q_expected, Q_targets)
         # Minimize the loss
@@ -107,15 +108,14 @@ class Agent():
         loss.backward()
         self.optimizer.step()
 
-        # ------------------- update target network ------------------- #
-        self.soft_update(self.qnetwork_local, self.qnetwork_target, TAU)
+        self.soft_updatee(self.qnetwork_local, self.qnetwork_target, TAU)
 
     def hard_update(self, local_model, target_model):
         """Hard update the bias and the weights from the local Network to the target network"""
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(local_param.data)
 
-    def soft_update(self, local_model, target_model, tau):
+    def soft_updatee(self, local_model, target_model, tau):
         """Soft update the weights and biases from the local Network to the target network using the update factor tau"""
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(tau * local_param.data + (1.0 - tau) * target_param.data)
