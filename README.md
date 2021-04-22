@@ -39,8 +39,8 @@ Check the following link for more details: <br>
 ###Prerequisites
 Python 3.6
 Unity
-And then to install python dependencies.
 
+##Installation:
 pip install -r requirements.txt
 
 Then you should be able to run jupyter notebook and view Navigation.ipyb.
