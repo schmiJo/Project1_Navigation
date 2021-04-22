@@ -29,7 +29,7 @@ The Agent decides on these actions using an epsilon greedy policy. <br>
 The preferred action is determined by the highest of
 the four output nodes of the model.
 
-The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
+The task is episodic, and in order to solve the environment, the agent must get an average score of +13 over 100 consecutive episodes.
 
 Check the following link for more details: <br>
 <https://github.com/udacity/deep-reinforcement-learning/tree/master/p1_navigation>
@@ -44,5 +44,6 @@ Unity
 pip install -r requirements.txt
 
 Then you should be able to run jupyter notebook and view Navigation.ipyb.
+
 
 
